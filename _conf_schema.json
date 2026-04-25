@@ -1,0 +1,80 @@
+{
+  "base_url": {
+    "type": "string",
+    "description": "TaJiDuo API 地址",
+    "hint": "后端基础地址，默认使用 shallow.ink 部署",
+    "default": "https://tajiduo.shallow.ink"
+  },
+  "api_key": {
+    "type": "string",
+    "description": "TaJiDuo API Key",
+    "hint": "参考插件说明中的测试 key，可按需替换为你自己的服务端 key",
+    "default": "tjd-8FtI7adTkMHMjZaE"
+  },
+  "request_timeout_ms": {
+    "type": "int",
+    "description": "普通请求超时",
+    "hint": "单位毫秒",
+    "default": 15000
+  },
+  "community_task_timeout_ms": {
+    "type": "int",
+    "description": "社区任务总超时",
+    "hint": "单位毫秒，轮询社区任务时使用",
+    "default": 300000
+  },
+  "community_poll_interval_ms": {
+    "type": "int",
+    "description": "社区任务轮询间隔",
+    "hint": "单位毫秒",
+    "default": 2000
+  },
+  "render_timeout": {
+    "type": "int",
+    "description": "渲染超时",
+    "hint": "Playwright 等待页面完成的最长时间，单位毫秒",
+    "default": 30000
+  },
+  "help_prefix_display": {
+    "type": "string",
+    "description": "帮助页命令展示前缀",
+    "hint": "仅影响帮助图内的命令显示，不影响真实命令注册",
+    "default": ""
+  },
+  "action_delay_ms": {
+    "type": "int",
+    "description": "社区任务动作延迟",
+    "hint": "提交社区签到任务时透传给后端，单位毫秒",
+    "default": 3000
+  },
+  "step_delay_ms": {
+    "type": "int",
+    "description": "社区任务步骤延迟",
+    "hint": "提交社区签到任务时透传给后端，单位毫秒",
+    "default": 8000
+  },
+  "auto_community_sign_enabled": {
+    "type": "bool",
+    "description": "自动社区签到",
+    "hint": "每天定时为全部已登录账号执行幻塔和异环社区签到",
+    "default": true
+  },
+  "auto_community_sign_time": {
+    "type": "string",
+    "description": "自动社区签到时间",
+    "hint": "格式 HH:MM",
+    "default": "00:20"
+  },
+  "auto_community_sign_interval": {
+    "type": "int",
+    "description": "自动社区签到账号间隔",
+    "hint": "单位秒",
+    "default": 3
+  },
+  "auto_community_sign_notify_target": {
+    "type": "string",
+    "description": "自动社区签到通知会话",
+    "hint": "完整 UMO，例如 default:GroupMessage:123456；留空则不主动发送通知",
+    "default": ""
+  }
+}

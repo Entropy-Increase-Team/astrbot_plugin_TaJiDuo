@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=1732, initial-scale=1">
+  <title>{{pageTitle}}</title>
+  <link rel="stylesheet" href="{{_res_path}}render/choukafenxi/style.css">
+</head>
+<body>
+  <div
+    class="gacha-page"
+    style="
+      --page-height: {{pageHeight or 1044}}px;
+      --screen-height: {{screenHeight or 760}}px;
+      --screen-top: {{screenTop or 126}}px;
+      --frame-background: url('{{frameBackground or (_res_path ~ 'render/choukafenxi/img/YH_UI_bg_furniture_collect_stretched.png')}}');
+    "
+  >
+    <div class="screen-shell">
+      {% if themeLeftArt %}
+      <img class="page-art page-art-left" src="{{themeLeftArt}}" alt="">
+      {% endif %}
+      {% if themeRightArt %}
+      <img class="page-art page-art-right" src="{{themeRightArt}}" alt="">
+      {% endif %}
+      <div class="screen-overlay"></div>
+
+      <header class="topbar">
+        <div class="user-block">
+          {% if user.avatar %}
+          <img class="user-avatar" src="{{user.avatar}}" alt="{{user.nickname}}">
+          {% endif %}
+          <div class="user-meta">
+            <div class="user-name">{{user.nickname}}</div>
+            <div class="user-uid">UID {{user.uid}}</div>
+          </div>
+        </div>
+
+        <div class="title-block">
+          <div class="title-kicker">{{titleKicker}}</div>
+          <div class="page-title">{{pageTitle}}</div>
+          <div class="page-subtitle">{{pageSubtitle}}</div>
+        </div>
+
+        <div class="meta-block">
+          <div class="meta-time">{{analysisTime}}</div>
+          <div class="meta-hint">{{updateHint}}</div>
+        </div>
+      </header>
+
+      <section class="summary-row">
+        {% for card in summaryCards %}
+        <div class="summary-card summary-card-{{card.accent}}">
+          <div class="summary-label">{{card.label}}</div>
+          <div class="summary-value">{{card.value}}</div>
+          {% if card.note %}
+          <div class="summary-note">{{card.note}}</div>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </section>
+
+      <section class="pool-grid">
+        {% for column in poolColumns %}
+        <section class="pool-column pool-column-{{column.accent}}">
+          <div class="column-head">
+            <div class="column-title">{{column.title}}</div>
+            <div class="column-subtitle">{{column.subtitle}}</div>
+          </div>
+
+          <div class="column-body">
+            {% if column.pools %}
+            {% for pool in column.pools %}
+            <article class="pool-card pool-card-{{column.accent}}">
+              {% if pool.banner %}
+              <img class="pool-banner" src="{{pool.banner}}" alt="">
+              {% endif %}
+              <div class="pool-card-mask"></div>
+
+              <div class="pool-main">
+                <div class="pool-title-row">
+                  <div class="pool-name">{{pool.name}}</div>
+                  <div class="pool-period">{{pool.period}}</div>
+                </div>
+
+                <div class="pool-metrics">
+                  {% for metric in pool.metrics %}
+                  <div class="metric-chip">
+                    <span class="metric-label">{{metric.label}}</span>
+                    <strong class="metric-value">{{metric.value}}</strong>
+                  </div>
+                  {% endfor %}
+                </div>
+
+                {% if pool.records %}
+                <div class="record-list">
+                  {% for record in pool.records %}
+                  <div class="record-row">
+                    <div class="record-avatar-wrap">
+                      {% if record.avatar %}
+                      <img class="record-avatar" src="{{record.avatar}}" alt="{{record.name}}">
+                      {% else %}
+                      <div class="record-avatar record-avatar-empty">?</div>
+                      {% endif %}
+                    </div>
+
+                    <div class="record-bar">
+                      {% if record.refPercent %}
+                      <div class="record-ref" style="left: {{record.refPercent}}%;"></div>
+                      {% endif %}
+                      <div class="record-fill record-fill-{{record.level}}" style="width: {{record.barPercent}}%;">
+                        <span class="record-fill-text">{{record.name}} · {{record.pullCount}} 抽</span>
+                      </div>
+                    </div>
+
+                    <span class="record-badge record-badge-{{record.badgeClass}}">{{record.badge}}</span>
+                  </div>
+                  {% endfor %}
+                </div>
+                {% else %}
+                <div class="record-empty">{{column.emptyText or "暂无抽卡记录"}}</div>
+                {% endif %}
+
+                {% if pool.currentPity %}
+                <div class="pity-row">
+                  <span class="pity-label">当前垫池</span>
+                  <strong class="pity-value">{{pool.currentPity}} 抽</strong>
+                  <span class="pity-note">{{pool.pityNote}}</span>
+                </div>
+                {% endif %}
+              </div>
+            </article>
+            {% endfor %}
+            {% else %}
+            <div class="column-empty">{{column.emptyText or "暂无抽卡记录"}}</div>
+            {% endif %}
+          </div>
+        </section>
+        {% endfor %}
+      </section>
+    </div>
+
+    <div class="footer-pill">
+      <div class="footer-title">{{footerTitle}}</div>
+      <div class="footer-text">{{footerText}}</div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,6 @@
+name: astrbot_plugin_TaJiDuo
+display_name: 塔吉多异环幻塔插件
+desc: 基于 TaJiDuo API 的 AstrBot 插件，提供登录、账号管理、异环与幻塔社区签到和基础渲染能力。
+version: "0.1.0"
+author: Codex
+repo: https://github.com/openai/codex

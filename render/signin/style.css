@@ -1,0 +1,210 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  background: transparent;
+  font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+}
+
+.signin-page {
+  width: 980px;
+  height: 1320px;
+  position: relative;
+  background:
+    linear-gradient(180deg, rgba(11, 14, 20, 0.74) 0%, rgba(26, 33, 40, 0.44) 26%, rgba(18, 24, 28, 0.36) 100%),
+    url("{{_res_path}}img/bg/YH_UI_CityMission_Magazine2.png") no-repeat center center;
+  background-size: 100% 100%;
+  overflow: hidden;
+}
+
+.signin-overlay {
+  position: relative;
+  height: 1320px;
+  padding: 24px 28px 28px;
+}
+
+.head-strip {
+  position: relative;
+  width: 420px;
+  margin: 0 auto;
+}
+
+.head-strip-bg {
+  width: 100%;
+  display: block;
+}
+
+.head-strip-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.signin-head {
+  margin-top: 18px;
+  text-align: center;
+  color: #fff;
+}
+
+.signin-title {
+  font-size: 44px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.signin-subtitle {
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 18px;
+}
+
+.summary-card {
+  margin-top: 18px;
+  padding: 18px 20px;
+  background: rgba(10, 15, 22, 0.58);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 0 0 2px rgba(84, 219, 231, 0.14);
+  backdrop-filter: blur(4px);
+}
+
+.summary-status {
+  color: #fff;
+  font-size: 28px;
+  font-weight: 900;
+}
+
+.summary-desc {
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.signin-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.signin-card {
+  padding: 18px;
+  background: rgba(248, 248, 249, 0.92);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: flex-end;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+  padding-bottom: 10px;
+}
+
+.card-game {
+  color: #111;
+  font-size: 32px;
+  font-weight: 900;
+}
+
+.card-result {
+  color: #2f885e;
+  font-size: 18px;
+  font-weight: 800;
+  text-align: right;
+}
+
+.task-panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.task-panel {
+  background: rgba(255, 255, 255, 0.8);
+  border-left: 4px solid #59dce6;
+  padding: 12px 12px 10px;
+}
+
+.task-title {
+  color: #111;
+  font-size: 18px;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.task-item {
+  display: grid;
+  grid-template-columns: 28px 1fr auto;
+  gap: 8px;
+  align-items: start;
+  padding: 7px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.task-item:first-child {
+  border-top: 0;
+}
+
+.task-index {
+  color: #7a7e84;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.task-name {
+  color: #222;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.task-value {
+  color: #3d4650;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.5;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.status-success .card-result {
+  color: #2f885e;
+}
+
+.status-partial .card-result {
+  color: #d59633;
+}
+
+.status-failed .card-result {
+  color: #b94d54;
+}
+
+.status-success .task-panel {
+  border-left-color: #59dce6;
+}
+
+.status-partial .task-panel {
+  border-left-color: #f0b24e;
+}
+
+.status-failed .task-panel {
+  border-left-color: #da7272;
+}

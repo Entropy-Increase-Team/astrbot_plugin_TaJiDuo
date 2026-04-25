@@ -1,0 +1,390 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  background: transparent;
+  font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+}
+
+.personal-card-page {
+  width: 1552px;
+  height: 888px;
+  position: relative;
+  overflow: hidden;
+  background: url("{{_res_path}}render/personal_card/img/YH_UI_personal_info_bg_01.png") no-repeat center center;
+  background-size: 100% 100%;
+}
+
+.pc-shell {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.profile-panel {
+  position: absolute;
+  left: 118px;
+  top: 92px;
+  width: 518px;
+}
+
+.uid-line {
+  text-align: right;
+  color: #6a625d;
+  font-size: 18px;
+  font-weight: 900;
+  text-shadow:
+    -1px -1px 0 #fff,
+    1px -1px 0 #fff,
+    -1px 1px 0 #fff,
+    1px 1px 0 #fff;
+  margin-bottom: 10px;
+}
+
+.calling-card {
+  position: relative;
+  height: 334px;
+  border-radius: 22px;
+  overflow: hidden;
+  background-position: center center;
+  background-size: cover;
+  box-shadow: 0 0 0 4px #1f1f20, 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+.card-mask {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.42)),
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.04), transparent 36%);
+}
+
+.avatar-ring {
+  position: absolute;
+  left: 50%;
+  top: 37px;
+  transform: translateX(-50%);
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  border: 5px solid #b7c1ff;
+  box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.14), 0 0 18px rgba(187, 197, 255, 0.7);
+  overflow: hidden;
+  background: rgba(8, 8, 8, 0.4);
+}
+
+.avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-name {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 147px;
+  text-align: center;
+  color: #fff;
+  font-size: 26px;
+  font-weight: 900;
+  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+}
+
+.card-subtitle {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 187px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.18);
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.card-meta-grid {
+  position: absolute;
+  left: 26px;
+  right: 26px;
+  bottom: 18px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 14px;
+}
+
+.card-meta-item {
+  min-height: 44px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: rgba(10, 10, 10, 0.42);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.card-meta-label {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.card-meta-value {
+  margin-top: 4px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.signature-box {
+  margin-top: 14px;
+  min-height: 74px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 3px solid #2e2d2d;
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.4);
+  padding: 16px 18px;
+  color: #4a4744;
+  font-size: 20px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+}
+
+.assets-title,
+.roles-title,
+.stickers-title {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  color: #111;
+  font-size: 28px;
+  font-weight: 900;
+  text-shadow:
+    -2px -2px 0 #fff,
+    2px -2px 0 #fff,
+    -2px 2px 0 #fff,
+    2px 2px 0 #fff;
+}
+
+.section-icon {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
+  margin-right: -14px;
+}
+
+.section-title-text {
+  position: relative;
+  z-index: 2;
+}
+
+.assets-title {
+  margin-top: 18px;
+}
+
+.assets-wrap {
+  position: relative;
+  height: 236px;
+  margin-top: 8px;
+}
+
+.asset-card {
+  position: absolute;
+  width: 244px;
+  height: 182px;
+}
+
+.asset-house {
+  left: 2px;
+  top: 18px;
+  transform: rotate(-7deg);
+}
+
+.asset-car {
+  left: 214px;
+  top: 10px;
+  transform: rotate(7deg);
+}
+
+.asset-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.asset-photo-clip {
+  position: absolute;
+  left: 18px;
+  top: 16px;
+  right: 18px;
+  height: 114px;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.asset-photo-house {
+  left: 20px;
+  right: 20px;
+  top: 20px;
+  height: 108px;
+}
+
+.asset-photo-car {
+  left: 26px;
+  right: 26px;
+  top: 22px;
+  height: 102px;
+}
+
+.asset-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.asset-name {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 14px;
+  text-align: center;
+  color: #fff;
+  font-size: 19px;
+  font-weight: 900;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.roles-panel {
+  position: absolute;
+  left: 808px;
+  top: 72px;
+  width: 640px;
+}
+
+.roles-board {
+  position: relative;
+  width: 640px;
+  height: 420px;
+  margin-top: 10px;
+}
+
+.roles-board-bg {
+  width: 100%;
+  height: 100%;
+}
+
+.role-grid {
+  position: absolute;
+  inset: 36px 28px 24px 28px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px 18px;
+}
+
+.role-slot {
+  position: relative;
+  width: 132px;
+  height: 132px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.role-avatar-wrap {
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  border: 6px solid var(--ring-color);
+  box-shadow: 0 0 0 4px #111, inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+  background: #1b1b1d;
+}
+
+.role-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.role-level {
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 64px;
+  padding: 2px 10px 3px;
+  border-radius: 999px;
+  background: rgba(18, 18, 18, 0.92);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 900;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.role-placeholder {
+  width: 116px;
+  height: 116px;
+}
+
+.role-plus {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -58%);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 66px;
+  line-height: 1;
+  font-weight: 300;
+}
+
+.stickers-panel {
+  position: absolute;
+  left: 814px;
+  top: 546px;
+  width: 626px;
+}
+
+.sticker-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.sticker-slot {
+  position: relative;
+  width: 144px;
+  height: 144px;
+}
+
+.sticker-bg {
+  width: 144px;
+  height: 144px;
+}
+
+.sticker-image {
+  position: absolute;
+  left: 24px;
+  top: 24px;
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+}
+
+.sticker-plus {
+  position: absolute;
+  left: 50%;
+  top: 49%;
+  transform: translate(-50%, -50%);
+  color: rgba(96, 96, 96, 0.9);
+  font-size: 62px;
+  font-weight: 300;
+}

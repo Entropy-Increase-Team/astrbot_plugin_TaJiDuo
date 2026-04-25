@@ -1,0 +1,1 @@
+"""AstrBot TaJiDuo plugin package."""

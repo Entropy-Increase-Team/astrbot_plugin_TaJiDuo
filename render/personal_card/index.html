@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=1552, initial-scale=1">
+  <title>{{pageTitle}}</title>
+  <link rel="stylesheet" href="{{_res_path}}render/personal_card/style.css">
+</head>
+<body>
+  <div class="personal-card-page">
+    <div class="pc-shell">
+      <section class="profile-panel">
+        <div class="uid-line">UID {{user.uid}}</div>
+
+        <div class="calling-card" style="background-image:url('{{user.cardBackground}}')">
+          <div class="card-mask"></div>
+          <div class="avatar-ring">
+            <img class="avatar-image" src="{{user.avatar}}" alt="{{user.name}}">
+          </div>
+          <div class="card-name">{{user.name}}</div>
+          <div class="card-subtitle">{{user.cardSubtitle}}</div>
+          <div class="card-meta-grid">
+            <div class="card-meta-item">
+              <div class="card-meta-label">奇遇天数</div>
+              <div class="card-meta-value">{{user.adventureDays}}</div>
+            </div>
+            <div class="card-meta-item">
+              <div class="card-meta-label">生日</div>
+              <div class="card-meta-value">{{user.birthday}}</div>
+            </div>
+            <div class="card-meta-item">
+              <div class="card-meta-label">猎人等级</div>
+              <div class="card-meta-value">{{user.hunterLevel}}</div>
+            </div>
+            <div class="card-meta-item">
+              <div class="card-meta-label">鉴别等级</div>
+              <div class="card-meta-value">{{user.identifyLevel}}</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="signature-box">{{user.signature}}</div>
+
+        <div class="assets-title">
+          <img class="section-icon" src="{{_res_path}}render/personal_card/img/YH_UI_personal_info_ornament_03.png" alt="">
+          <span class="section-title-text">资产展示</span>
+        </div>
+
+        <div class="assets-wrap">
+          <div class="asset-card asset-house">
+            <img class="asset-frame" src="{{_res_path}}render/personal_card/img/YH_UI_personal_info_house_bg.png" alt="">
+            <div class="asset-photo-clip asset-photo-house">
+              <img class="asset-photo" src="{{assets.house.image}}" alt="{{assets.house.title}}">
+            </div>
+            <div class="asset-name">{{assets.house.title}}</div>
+          </div>
+
+          <div class="asset-card asset-car">
+            <img class="asset-frame" src="{{_res_path}}render/personal_card/img/YH_UI_personal_info_bg_auto.png" alt="">
+            <div class="asset-photo-clip asset-photo-car">
+              <img class="asset-photo" src="{{assets.car.image}}" alt="{{assets.car.title}}">
+            </div>
+            <div class="asset-name">{{assets.car.title}}</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="roles-panel">
+        <div class="roles-title">
+          <img class="section-icon" src="{{_res_path}}render/personal_card/img/YH_UI_personal_info_ornament_01.png" alt="">
+          <span class="section-title-text">角色展示</span>
+        </div>
+
+        <div class="roles-board">
+          <img class="roles-board-bg" src="{{_res_path}}render/personal_card/img/YH_UI_personal_info_bg_role.png" alt="">
+          <div class="role-grid">
+            {{each roles item}}
+            <div class="role-slot{{if item.isEmpty}} is-empty{{/if}}">
+              {{if item.isEmpty}}
+              <img class="role-placeholder" src="{{_res_path}}render/personal_card/img/YH_UI_personal_info_bg_paster01.png" alt="">
+              <div class="role-plus">+</div>
+              {{else}}
+              <div class="role-avatar-wrap" style="--ring-color: {{item.ringColor}}">
+                <img class="role-avatar" src="{{item.avatar}}" alt="{{item.name}}">
+              </div>
+              <div class="role-level">Lv.{{item.level}}</div>
+              {{/if}}
+            </div>
+            {{/each}}
+          </div>
+        </div>
+      </section>
+
+      <section class="stickers-panel">
+        <div class="stickers-title">
+          <img class="section-icon" src="{{_res_path}}render/personal_card/img/YH_UI_personal_info_ornament_02.png" alt="">
+          <span class="section-title-text">贴纸展示</span>
+        </div>
+
+        <div class="sticker-grid">
+          {{each stickers item}}
+          <div class="sticker-slot{{if item.isEmpty}} is-empty{{/if}}">
+            <img class="sticker-bg" src="{{_res_path}}render/personal_card/img/YH_UI_personal_info_bg_paster.png" alt="">
+            {{if item.isEmpty}}
+            <div class="sticker-plus">+</div>
+            {{else}}
+            <img class="sticker-image" src="{{item.image}}" alt="{{item.name}}">
+            {{/if}}
+          </div>
+          {{/each}}
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+</html>
