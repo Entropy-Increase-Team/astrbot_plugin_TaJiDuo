@@ -1,6 +1,7 @@
 <div align="center">
 
 # astrbot_plugin_TaJiDuo
+# 插件维护者bvzrays已跑路异环，项目只保持最低限度可用
 ### *TaJiDuo 异环 / 幻塔 AstrBot 插件*
 
 [![AstrBot](https://img.shields.io/badge/AstrBot-Plugin-E8B04C?style=for-the-badge&logo=python)](https://github.com/Soulter/AstrBot)
@@ -220,8 +221,3 @@ render/
 
 ---
 
-## 说明
-
-- 你在终端里看到的乱码是控制台编码问题，不是插件源文件本身的数据问题。
-- 当前这版已经把新版文档里优先级高的资料、档案、签到状态、补签、社区等级、绑定角色、记录查询接进来了。
-- 异环档案目前明确走 `astrbot_plugin_TaJiDuo/render/personal_card`，后续可以继续细调视觉。
