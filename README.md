@@ -1,7 +1,7 @@
 <div align="center">
 
 # astrbot_plugin_TaJiDuo
-# 插件维护者bvzrays已跑路异环，项目只保持最低限度可用
+# 插件维护者bvzrays异环已跑路，项目只保持最低限度可用
 ### *TaJiDuo 异环 / 幻塔 AstrBot 插件*
 
 [![AstrBot](https://img.shields.io/badge/AstrBot-Plugin-E8B04C?style=for-the-badge&logo=python)](https://github.com/Soulter/AstrBot)
