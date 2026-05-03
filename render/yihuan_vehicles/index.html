@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=1180, initial-scale=1">
+  <title>{{pageTitle}}</title>
+  <link rel="stylesheet" href="{{_res_path}}render/yihuan_vehicles/style.css">
+</head>
+<body>
+  <div class="asset-page">
+    <div class="asset-shell">
+      <header class="page-header">
+        <div class="header-user">
+          <img class="user-avatar" src="{{user.avatar}}" alt="{{user.name}}">
+          <div>
+            <div class="page-tag">{{pageTag}}</div>
+            <h1>{{user.name}}</h1>
+            <div class="page-meta">UID {{user.uid}} · {{user.server}}</div>
+          </div>
+        </div>
+        <div class="summary-grid">
+          {{each summary item}}
+          <div class="summary-card">
+            <div class="summary-value">{{item.value}}</div>
+            <div class="summary-label">{{item.label}}</div>
+          </div>
+          {{/each}}
+        </div>
+      </header>
+
+      <section class="hero-card">
+        <div class="hero-text">
+          <div class="hero-label">{{highlight.label}}</div>
+          <div class="hero-value">{{highlight.value}}</div>
+          <div class="progress-bar"><span style="width: {{highlight.percent}}%"></span></div>
+          <div class="hero-desc">{{highlight.description}}</div>
+        </div>
+        <div class="hero-image-wrap">
+          <img class="hero-image" src="{{highlight.image}}" alt="{{highlight.value}}">
+        </div>
+      </section>
+
+      <section class="list-panel">
+        <div class="panel-title">{{sectionTitle}}</div>
+        {{if items.length}}
+        <div class="asset-grid">
+          {{each items item}}
+          <article class="asset-card{{if item.isOwned}} is-owned{{/if}}">
+            <div class="asset-name">{{item.name}}</div>
+            <div class="asset-state">{{item.state}}</div>
+            <div class="asset-subtext">{{item.subtext}}</div>
+          </article>
+          {{/each}}
+        </div>
+        {{else}}
+        <div class="empty-state">{{emptyText}}</div>
+        {{/if}}
+      </section>
+    </div>
+  </div>
+</body>
+</html>

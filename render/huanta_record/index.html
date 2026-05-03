@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=1420, initial-scale=1">
+  <title>{{pageTitle}}</title>
+  <link rel="stylesheet" href="{{_res_path}}render/huanta_record/style.css">
+</head>
+<body>
+  <div class="record-page">
+    <div class="record-shell">
+      <header class="record-header">
+        <div class="header-kicker">TaJiDuo x Huanta</div>
+        <div class="header-title">{{pageTitle}}</div>
+        <div class="header-subtitle">{{pageSubtitle}}</div>
+      </header>
+
+      <section class="summary-grid">
+        <div class="summary-card">
+          <span class="summary-label">角色</span>
+          <strong class="summary-value">{{summary.name}}</strong>
+        </div>
+        <div class="summary-card">
+          <span class="summary-label">角色ID</span>
+          <strong class="summary-value">{{summary.roleId}}</strong>
+        </div>
+        <div class="summary-card">
+          <span class="summary-label">服务器</span>
+          <strong class="summary-value">{{summary.server}}</strong>
+        </div>
+        <div class="summary-card">
+          <span class="summary-label">等级 / GS</span>
+          <strong class="summary-value">Lv.{{summary.level}} / {{summary.gs}}</strong>
+        </div>
+        <div class="summary-card">
+          <span class="summary-label">当前展示</span>
+          <strong class="summary-value">{{summary.selected}}</strong>
+        </div>
+      </section>
+
+      <section class="panel-grid">
+        {% for section in sections %}
+        <article class="panel-card">
+          <div class="panel-head">
+            <div class="panel-title">{{section.title}}</div>
+            <div class="panel-count">{{section.count}}</div>
+          </div>
+
+          {% if section.items %}
+          <div class="panel-list">
+            {% for item in section.items %}
+            <div class="panel-item">
+              <div class="panel-name">{{item.name}}</div>
+              <div class="panel-id">{{item.id}}</div>
+            </div>
+            {% endfor %}
+          </div>
+          {% else %}
+          <div class="panel-empty">暂无数据</div>
+          {% endif %}
+        </article>
+        {% endfor %}
+      </section>
+    </div>
+  </div>
+</body>
+</html>

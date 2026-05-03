@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=1180, initial-scale=1">
+  <title>{{pageTitle}}</title>
+  <link rel="stylesheet" href="{{_res_path}}render/yihuan_characters/style.css">
+</head>
+<body>
+  <div class="yboard-page">
+    <div class="yboard-shell">
+      <img class="yboard-illust" src="{{_res_path}}img/bg/YH_UI_CityMission_Magazine2.png" alt="">
+
+      <header class="yboard-header">
+        <div class="yboard-header-main">
+          <div class="yboard-avatar-wrap">
+            <img class="yboard-avatar" src="{{user.avatar}}" alt="{{user.name}}">
+          </div>
+          <div class="yboard-user">
+            <div class="yboard-tag">{{pageTag}}</div>
+            <h1>{{user.name}}</h1>
+            <div class="yboard-meta">UID {{user.uid}} · {{user.server}}</div>
+          </div>
+        </div>
+        <div class="yboard-summary">
+          {{each summary item}}
+          <div class="summary-card">
+            <div class="summary-value">{{item.value}}</div>
+            <div class="summary-label">{{item.label}}</div>
+          </div>
+          {{/each}}
+        </div>
+      </header>
+
+      <section class="board-panel">
+        <div class="panel-title">{{sectionTitle}}</div>
+        {{if items.length}}
+        <div class="char-grid">
+          {{each items item}}
+          <article class="char-card" style="--ring-color: {{item.ringColor}}">
+            <div class="char-head">
+              <div class="char-avatar-wrap">
+                <img class="char-avatar" src="{{item.avatar}}" alt="{{item.name}}">
+              </div>
+              <div class="char-info">
+                <div class="char-name">{{item.name}}</div>
+                <div class="char-tags">
+                  <span>{{item.quality}}</span>
+                  <span>{{item.element}}</span>
+                  <span>{{item.group}}</span>
+                </div>
+              </div>
+            </div>
+            <div class="char-stats">
+              <div class="char-stat">等级 <strong>{{item.level}}</strong></div>
+              <div class="char-stat">觉醒 <strong>{{item.awaken}}</strong></div>
+            </div>
+            <div class="char-props">
+              {{each item.props prop}}
+              <div class="char-prop">{{prop.name}} {{prop.value}}</div>
+              {{/each}}
+            </div>
+          </article>
+          {{/each}}
+        </div>
+        {{else}}
+        <div class="empty-state">{{emptyText}}</div>
+        {{/if}}
+      </section>
+    </div>
+  </div>
+</body>
+</html>

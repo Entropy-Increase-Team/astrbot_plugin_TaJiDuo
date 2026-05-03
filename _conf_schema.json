@@ -8,8 +8,8 @@
   "api_key": {
     "type": "string",
     "description": "TaJiDuo API Key",
-    "hint": "参考插件说明中的测试 key，可按需替换为你自己的服务端 key",
-    "default": "tjd-8FtI7adTkMHMjZaE"
+    "hint": "默认不内置 key。测试时请手动填入测试 key，正式使用请替换为你自己的服务端 key",
+    "default": ""
   },
   "request_timeout_ms": {
     "type": "int",
@@ -34,6 +34,24 @@
     "description": "渲染超时",
     "hint": "Playwright 等待页面完成的最长时间，单位毫秒",
     "default": 30000
+  },
+  "login_server_enabled": {
+    "type": "bool",
+    "description": "启用网页登录服务",
+    "hint": "开启后可通过 tjd网页登录 或空参 tjd登录 获取网页登录链接",
+    "default": false
+  },
+  "login_server_port": {
+    "type": "int",
+    "description": "网页登录服务端口",
+    "hint": "本地 HTTP 服务端口，默认 25188",
+    "default": 25188
+  },
+  "login_server_public_link": {
+    "type": "string",
+    "description": "网页登录服务公开地址",
+    "hint": "默认使用 http://127.0.0.1:端口；可直接填写 127.0.0.1、局域网 IP、域名或完整 URL，插件会自动补协议和端口",
+    "default": ""
   },
   "help_prefix_display": {
     "type": "string",

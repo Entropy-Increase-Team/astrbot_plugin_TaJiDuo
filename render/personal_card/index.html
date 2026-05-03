@@ -15,7 +15,7 @@
         <div class="calling-card" style="background-image:url('{{user.cardBackground}}')">
           <div class="card-mask"></div>
           <div class="avatar-ring">
-            <img class="avatar-image" src="{{user.avatar}}" alt="{{user.name}}">
+            <img class="avatar-image" src="{{user.avatar}}" data-fallback="{{user.fallbackAvatar}}" onerror="if(this.dataset.fallback&&!this.dataset.failed){this.dataset.failed='1';this.src=this.dataset.fallback;}" alt="{{user.name}}">
           </div>
           <div class="card-name">{{user.name}}</div>
           <div class="card-subtitle">{{user.cardSubtitle}}</div>
@@ -81,7 +81,7 @@
               <div class="role-plus">+</div>
               {{else}}
               <div class="role-avatar-wrap" style="--ring-color: {{item.ringColor}}">
-                <img class="role-avatar" src="{{item.avatar}}" alt="{{item.name}}">
+                <img class="role-avatar" src="{{item.avatar}}" data-fallback="{{item.fallbackAvatar}}" onerror="if(this.dataset.fallback&&!this.dataset.failed){this.dataset.failed='1';this.src=this.dataset.fallback;}" alt="{{item.name}}">
               </div>
               <div class="role-level">Lv.{{item.level}}</div>
               {{/if}}

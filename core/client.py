@@ -141,6 +141,13 @@ class TaJiDuoClient:
             fwt=fwt,
         )
 
+    async def get_profile(self, fwt: str) -> Dict[str, Any]:
+        return await self._request(
+            "GET",
+            "/api/v1/login/tajiduo/profile",
+            fwt=fwt,
+        )
+
     async def list_accounts(self, fwt: str) -> Dict[str, Any]:
         return await self._request(
             "GET",
@@ -148,11 +155,19 @@ class TaJiDuoClient:
             fwt=fwt,
         )
 
-    async def delete_account(self, fwt: str) -> Dict[str, Any]:
+    async def set_primary_account(self, fwt: str) -> Dict[str, Any]:
+        return await self._request(
+            "POST",
+            "/api/v1/login/tajiduo/accounts/primary",
+            fwt=fwt,
+        )
+
+    async def delete_account(self, current_fwt: str, target_fwt: str = "") -> Dict[str, Any]:
+        token = str(target_fwt or current_fwt).strip()
         return await self._request(
             "DELETE",
-            f"/api/v1/login/tajiduo/accounts/{quote(fwt, safe='')}",
-            fwt=fwt,
+            f"/api/v1/login/tajiduo/accounts/{quote(token, safe='')}",
+            fwt=str(current_fwt or token).strip(),
         )
 
     async def list_games(self, fwt: str) -> Dict[str, Any]:
@@ -239,11 +254,58 @@ class TaJiDuoClient:
             fwt=fwt,
         )
 
+    async def bind_game_role(self, fwt: str, *, game_code: str, role_id: str) -> Dict[str, Any]:
+        return await self._request(
+            "POST",
+            "/api/v1/games/roles/bind",
+            fwt=fwt,
+            json_data={"gameCode": game_code, "roleId": role_id},
+        )
+
+    async def sign_reward_records(
+        self,
+        fwt: str,
+        *,
+        game_code: str = "",
+        count: int = 10,
+        version: int = 0,
+    ) -> Dict[str, Any]:
+        return await self._request(
+            "GET",
+            "/api/v1/games/sign/reward-records",
+            fwt=fwt,
+            params={
+                "gameCode": game_code,
+                "count": max(int(count or 10), 1),
+                "version": max(int(version or 0), 0),
+            },
+        )
+
     async def sign_state(self, game_key: str, fwt: str) -> Dict[str, Any]:
         return await self._request(
             "GET",
             f"/api/v1/games/{game_key}/sign/state",
             fwt=fwt,
+        )
+
+    async def sign_rewards(
+        self, game_key: str, fwt: str, *, role_id: str = ""
+    ) -> Dict[str, Any]:
+        return await self._request(
+            "GET",
+            f"/api/v1/games/{game_key}/sign/rewards",
+            fwt=fwt,
+            params={"roleId": role_id},
+        )
+
+    async def sign_resign_info(
+        self, game_key: str, fwt: str, *, role_id: str = ""
+    ) -> Dict[str, Any]:
+        return await self._request(
+            "GET",
+            f"/api/v1/games/{game_key}/sign/resign-info",
+            fwt=fwt,
+            params={"roleId": role_id},
         )
 
     async def sign_game(self, game_key: str, fwt: str, role_id: str) -> Dict[str, Any]:
@@ -252,6 +314,107 @@ class TaJiDuoClient:
             f"/api/v1/games/{game_key}/sign/game",
             fwt=fwt,
             json_data={"roleId": role_id},
+        )
+
+    async def sign_resign(self, game_key: str, fwt: str, role_id: str) -> Dict[str, Any]:
+        return await self._request(
+            "POST",
+            f"/api/v1/games/{game_key}/sign/resign",
+            fwt=fwt,
+            json_data={"roleId": role_id},
+        )
+
+    async def huanta_record_card(self, fwt: str) -> Dict[str, Any]:
+        return await self._request(
+            "GET",
+            "/api/v1/games/huanta/record-card",
+            fwt=fwt,
+        )
+
+    async def huanta_role_record(
+        self, fwt: str, *, role_id: str, record_type: str = "0"
+    ) -> Dict[str, Any]:
+        return await self._request(
+            "GET",
+            "/api/v1/games/huanta/role-record",
+            fwt=fwt,
+            params={"roleId": role_id, "type": record_type},
+        )
+
+    async def huanta_set_role_record_display(
+        self,
+        fwt: str,
+        *,
+        role_id: str,
+        record_type: str,
+        value: str = "",
+        values: Optional[list[str]] = None,
+    ) -> Dict[str, Any]:
+        payload: Dict[str, Any] = {"roleId": role_id, "type": record_type}
+        if value:
+            payload["value"] = value
+        if values:
+            payload["values"] = values
+        return await self._request(
+            "POST",
+            "/api/v1/games/huanta/role-record/display",
+            fwt=fwt,
+            json_data=payload,
+        )
+
+    async def yihuan_record_card(self, fwt: str) -> Dict[str, Any]:
+        return await self._request(
+            "GET",
+            "/api/v1/games/yihuan/record-card",
+            fwt=fwt,
+        )
+
+    async def yihuan_role_home(self, fwt: str, *, role_id: str = "") -> Dict[str, Any]:
+        return await self._request(
+            "GET",
+            "/api/v1/games/yihuan/role-home",
+            fwt=fwt,
+            params={"roleId": role_id},
+        )
+
+    async def yihuan_characters(self, fwt: str, *, role_id: str) -> Dict[str, Any]:
+        return await self._request(
+            "GET",
+            "/api/v1/games/yihuan/characters",
+            fwt=fwt,
+            params={"roleId": role_id},
+        )
+
+    async def yihuan_achieve_progress(self, fwt: str, *, role_id: str) -> Dict[str, Any]:
+        return await self._request(
+            "GET",
+            "/api/v1/games/yihuan/achieve-progress",
+            fwt=fwt,
+            params={"roleId": role_id},
+        )
+
+    async def yihuan_area_progress(self, fwt: str, *, role_id: str) -> Dict[str, Any]:
+        return await self._request(
+            "GET",
+            "/api/v1/games/yihuan/area-progress",
+            fwt=fwt,
+            params={"roleId": role_id},
+        )
+
+    async def yihuan_real_estate(self, fwt: str, *, role_id: str) -> Dict[str, Any]:
+        return await self._request(
+            "GET",
+            "/api/v1/games/yihuan/real-estate",
+            fwt=fwt,
+            params={"roleId": role_id},
+        )
+
+    async def yihuan_vehicles(self, fwt: str, *, role_id: str) -> Dict[str, Any]:
+        return await self._request(
+            "GET",
+            "/api/v1/games/yihuan/vehicles",
+            fwt=fwt,
+            params={"roleId": role_id},
         )
 
     async def community_tasks(
@@ -269,6 +432,43 @@ class TaJiDuoClient:
             "GET",
             f"/api/v1/games/{game_key}/community/sign/state",
             fwt=fwt,
+        )
+
+    async def community_exp_level(self, game_key: str, fwt: str) -> Dict[str, Any]:
+        return await self._request(
+            "GET",
+            f"/api/v1/games/{game_key}/community/exp/level",
+            fwt=fwt,
+        )
+
+    async def community_exp_records(
+        self, game_key: str, fwt: str, *, count: int = 10, version: int = 0
+    ) -> Dict[str, Any]:
+        return await self._request(
+            "GET",
+            f"/api/v1/games/{game_key}/community/exp/records",
+            fwt=fwt,
+            params={"count": max(int(count or 10), 1), "version": max(int(version or 0), 0)},
+        )
+
+    async def shop_coin_income_records(
+        self, fwt: str, *, size: int = 10, version: int = 0
+    ) -> Dict[str, Any]:
+        return await self._request(
+            "GET",
+            "/api/v1/games/shop/coin/records/income",
+            fwt=fwt,
+            params={"size": max(int(size or 10), 1), "version": max(int(version or 0), 0)},
+        )
+
+    async def shop_coin_consume_records(
+        self, fwt: str, *, size: int = 10, version: int = 0
+    ) -> Dict[str, Any]:
+        return await self._request(
+            "GET",
+            "/api/v1/games/shop/coin/records/consume",
+            fwt=fwt,
+            params={"size": max(int(size or 10), 1), "version": max(int(version or 0), 0)},
         )
 
     async def community_sign_submit(

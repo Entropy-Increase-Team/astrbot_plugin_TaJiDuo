@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=1080, initial-scale=1">
+  <title>{{pageTitle}}</title>
+  <link rel="stylesheet" href="{{_res_path}}render/account_profile/style.css">
+</head>
+<body>
+  <div class="profile-page">
+    <div class="profile-shell">
+      <header class="profile-header">
+        <div class="profile-title">{{pageTitle}}</div>
+        <div class="profile-subtitle">{{pageSubtitle}}</div>
+      </header>
+
+      <section class="hero-card">
+        <div class="hero-left">
+          <img class="hero-avatar" src="{{user.avatar}}" alt="{{user.name}}">
+          <div class="hero-meta">
+            <div class="hero-name">{{user.name}}</div>
+            <div class="hero-uid">UID {{user.uid}}</div>
+            <div class="hero-introduce">{{user.introduce}}</div>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="stat-card">
+            <span class="stat-label">绑定时间</span>
+            <strong class="stat-value">{{user.bindTime}}</strong>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">最近刷新</span>
+            <strong class="stat-value">{{user.updatedAt}}</strong>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">手机号</span>
+            <strong class="stat-value">{{user.phone}}</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <div class="section-title">能力接入</div>
+        <div class="binding-grid">
+          {% for item in bindings %}
+          <div class="binding-item">
+            <div class="binding-label">{{item.label}}</div>
+            <div class="binding-value">{{item.value}}</div>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+</html>

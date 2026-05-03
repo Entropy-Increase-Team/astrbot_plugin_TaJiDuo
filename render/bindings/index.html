@@ -14,12 +14,26 @@
     </div>
 
     <section class="summary-panel">
-      {{each accountFields item}}
-      <div class="summary-item">
-        <div class="summary-label">{{item.label}}</div>
-        <div class="summary-value">{{item.value}}</div>
+      <div class="summary-head">
+        <div class="account-avatar-box">
+          <img class="avatar-frame" src="{{_res_path}}img/touxiangkuang.png" alt="">
+          <img class="account-avatar" src="{{accountProfile.avatar}}" data-fallback="{{accountProfile.fallbackAvatar}}" onerror="if(this.dataset.fallback&&!this.dataset.failed){this.dataset.failed='1';this.src=this.dataset.fallback;}" alt="{{accountProfile.name}}">
+        </div>
+        <div class="account-copy">
+          <div class="account-name">{{accountProfile.name}}</div>
+          <div class="account-uid">UID {{accountProfile.uid}}</div>
+          <div class="account-introduce">{{accountProfile.introduce}}</div>
+        </div>
       </div>
-      {{/each}}
+
+      <div class="summary-grid">
+        {{each accountFields item}}
+        <div class="summary-item">
+          <div class="summary-label">{{item.label}}</div>
+          <div class="summary-value">{{item.value}}</div>
+        </div>
+        {{/each}}
+      </div>
     </section>
 
     <section class="games-grid">
@@ -31,7 +45,7 @@
         <div class="avatar-row">
           <div class="avatar-box">
             <img class="avatar-frame" src="{{_res_path}}img/touxiangkuang.png" alt="">
-            <img class="avatar-image" src="{{item.avatar}}" alt="{{item.name}}">
+            <img class="avatar-image" src="{{item.avatar}}" data-fallback="{{_res_path}}img/ui/Character.png" onerror="if(this.dataset.fallback&&!this.dataset.failed){this.dataset.failed='1';this.src=this.dataset.fallback;}" alt="{{item.name}}">
           </div>
           <div class="role-copy">
             <div class="role-name">{{item.name}}</div>

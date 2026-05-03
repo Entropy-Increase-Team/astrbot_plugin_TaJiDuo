@@ -1,0 +1,150 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  background: transparent;
+  font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+}
+
+.record-page {
+  width: 1420px;
+  min-height: 900px;
+  color: #fff8ef;
+  background:
+    linear-gradient(180deg, rgba(23, 14, 16, 0.74), rgba(14, 10, 18, 0.92)),
+    url("{{_res_path}}img/bg/YH_UI_CityMission_Magazine2.png") no-repeat center center;
+  background-size: cover;
+}
+
+.record-shell {
+  padding: 42px 44px 50px;
+}
+
+.record-header {
+  text-align: center;
+}
+
+.header-kicker {
+  color: #ffdca7;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 4px;
+}
+
+.header-title {
+  margin-top: 8px;
+  font-size: 44px;
+  font-weight: 900;
+}
+
+.header-subtitle {
+  margin-top: 12px;
+  color: rgba(255, 248, 239, 0.76);
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.summary-card,
+.panel-card {
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(18, 18, 24, 0.7);
+  backdrop-filter: blur(12px);
+}
+
+.summary-card {
+  min-height: 112px;
+  padding: 18px 20px;
+}
+
+.summary-label {
+  display: block;
+  color: rgba(255, 248, 239, 0.72);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.summary-value {
+  display: block;
+  margin-top: 14px;
+  font-size: 25px;
+  font-weight: 900;
+  line-height: 1.35;
+}
+
+.panel-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 22px;
+}
+
+.panel-card {
+  min-height: 290px;
+  padding: 20px 22px 24px;
+}
+
+.panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.panel-title {
+  font-size: 28px;
+  font-weight: 900;
+}
+
+.panel-count {
+  min-width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 214, 154, 0.18);
+  color: #ffe5ba;
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 48px;
+  text-align: center;
+}
+
+.panel-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.panel-item {
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.panel-name {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.panel-id {
+  margin-top: 8px;
+  color: rgba(255, 248, 239, 0.68);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.panel-empty {
+  margin-top: 24px;
+  color: rgba(255, 248, 239, 0.68);
+  font-size: 18px;
+  font-weight: 700;
+}
